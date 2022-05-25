@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="item" />
+      <button v-on:click="addItem">Add Item</button>
+
+      <label for="task"> Filter Task</label>
+      <select name="taskSelect" id="task" v-model="filterText">
+        <option value="complete">Complete</option>
+        <option value="incomplete">In Complete</option>
+        <option value="all">All</option>
+      </select>
+      <ol>
+        <li v-for="(item, index) in filteredItems">
+          <span>{{item.itemText}}</span>
+          <button @click="deleteItem(index)">Delete Item</button>
+          <button @click="changeStatus(index)">Mark as complete</button>
+        </li>
+      </ol>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>
